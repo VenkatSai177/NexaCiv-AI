@@ -1,0 +1,9 @@
+{
+  "name": "NexaCiv-AI",
+  "description": "A high-performance Urban AI Risk Intelligence platform using Gemini to automatically detect and manage civic hazards from visual data.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DisasterLens X CivicGuard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --risk-critical: #ff003c;
+            --risk-high: #ff8c00;
+            --risk-moderate: #ffcc00;
+            --risk-low: #00ff88;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #050505;
+            color: #ffffff;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neo-glow-blue {
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+        .neo-glow-critical {
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.4);
+            border: 1px solid rgba(255, 0, 60, 0.5) !important;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.33); opacity: 1; }
+            80%, 100% { opacity: 0; }
+        }
+        .pulse {
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+        .pulse::before {
+            content: '';
+            position: absolute;
+            left: -50%;
+            top: -50%;
+            width: 200%;
+            height: 200%;
+            border-radius: 50%;
+            background-color: var(--risk-critical);
+            animation: pulse-ring 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333;
+        }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            background: linear-gradient(0deg, rgba(0, 242, 255, 0) 0%, rgba(0, 242, 255, 0.1) 50%, rgba(0, 242, 255, 0) 100%);
+            position: absolute;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: -100px; }
+            100% { top: 100%; }
+        }
+
+        /* Premium Print Styles */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            #root, nav, .fixed, .glass, button, select {
+                display: none !important;
+            }
+            #premium-print-container {
+                display: block !important;
+                position: relative !important;
+                background: white !important;
+                color: black !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                z-index: auto !important;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
