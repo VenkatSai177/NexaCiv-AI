@@ -74,8 +74,13 @@ const AdminCommandCenter: React.FC = () => {
   };
 
   const handleLogout = () => {
+    // Standardized secure logout procedure
     firebaseService.logout();
-    window.location.reload();
+    
+    // Hard redirect to the app root ensures the session is purged and
+    // the Router resets to the catch-all Login route.
+    const rootUrl = window.location.origin + window.location.pathname;
+    window.location.replace(rootUrl);
   };
 
   const filteredCases = cases.filter(c => {

@@ -33,9 +33,9 @@ const Dashboard: React.FC<DashboardProps> = ({ currentCity, onCityChange }) => {
       <header className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
           <h1 className="text-5xl font-black tracking-tight mb-3 flex items-center gap-4">
-            Metropolitan Ops <span className="text-[10px] font-mono px-4 py-1.5 bg-cyan-500/20 text-cyan-400 border border-cyan-400/30 rounded-full animate-pulse tracking-[0.3em]">LIVE_TELEMETRY</span>
+            NexaCiv Ops <span className="text-[10px] font-mono px-4 py-1.5 bg-cyan-500/20 text-cyan-400 border border-cyan-400/30 rounded-full animate-pulse tracking-[0.3em]">LIVE_GRID_UPLINK</span>
           </h1>
-          <p className="text-white/40 max-w-xl font-light leading-relaxed">Dual-engine risk synchronization dashboard. Monitoring real-time hazards via integrated AI scanner nodes and citizen feedback loops.</p>
+          <p className="text-white/40 max-w-xl font-light leading-relaxed">NexaCiv AI Unified Intelligence Grid. Aggregating real-time hazard data via autonomous scanner nodes and validated citizen feedback.</p>
         </div>
 
         <div className="glass p-1.5 rounded-2xl border-white/10 flex gap-1 shadow-2xl">
@@ -52,31 +52,27 @@ const Dashboard: React.FC<DashboardProps> = ({ currentCity, onCityChange }) => {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        {/* Fixed SourceEngine comparison: 'CIVIC_GUARD' is the correct type value for human reports in types.ts */}
-        <StatCard label="Network Nodes" value={cases.length} subValue={`${cases.filter(c => c.sourceEngine === 'DISASTER_AI').length} AI Scans / ${cases.filter(c => c.sourceEngine === 'CIVIC_GUARD').length} Civic`} />
-        <StatCard label="Critical Zones" value={criticalCases.length} color="text-red-500" subValue="Urgent response active" />
-        <StatCard label="AI Integrity" value="96.2%" subValue="Global Certainty Index" />
-        <StatCard label="Avg Response" value="2.8h" subValue="Optimal efficiency" />
+        <StatCard label="Grid Nodes" value={cases.length} subValue={`${cases.filter(c => c.sourceEngine === 'DISASTER_AI').length} AI Scans / ${cases.filter(c => c.sourceEngine === 'CIVIC_GUARD').length} Civic`} />
+        <StatCard label="Active Alerts" value={criticalCases.length} color="text-red-500" subValue="Rapid response engaged" />
+        <StatCard label="Grid Health" value="96.2%" subValue="Uptime optimized" />
+        <StatCard label="Avg Response" value="2.8h" subValue="Service Level Metric" />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         <div className="lg:col-span-2 glass rounded-[40px] p-8 relative overflow-hidden group border-white/5 shadow-inner">
           <div className="flex items-center justify-between mb-8 relative z-10">
-            <h3 className="font-bold text-white/60 uppercase tracking-[0.4em] text-[10px]">Active Risk Heatmap // {currentCity.toUpperCase()}</h3>
+            <h3 className="font-bold text-white/60 uppercase tracking-[0.4em] text-[10px]">NexaCiv Heatmap // {currentCity.toUpperCase()}</h3>
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_#ff003c]"></span>
-              <span className="text-[8px] font-mono text-white/30">GRID_UPLINK_STABLE</span>
+              <span className="text-[8px] font-mono text-white/30">GRID_INTEGRITY_VERIFIED</span>
             </div>
           </div>
           
           <div className="h-[500px] w-full bg-black/40 rounded-3xl relative overflow-hidden border border-white/5 group-hover:border-cyan-500/20 transition-colors">
-            {/* Visual simulation of a futuristic map */}
             <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
             
-            {/* Pulsing Risk Pins */}
             <div className="absolute inset-0">
                {cases.map((c, i) => {
-                 // Simulated coordinates mapped to screen for visualization
                  const x = 10 + (Math.sin(i * 19) + 1) * 40;
                  const y = 10 + (Math.cos(i * 23) + 1) * 40;
                  const isCritical = c.analysis.riskLevel === RiskLevel.CRITICAL;
@@ -87,7 +83,6 @@ const Dashboard: React.FC<DashboardProps> = ({ currentCity, onCityChange }) => {
                       className="absolute group/pin cursor-pointer" 
                       style={{ top: `${y}%`, left: `${x}%` }}
                     >
-                      {/* Cluster animated ripple */}
                       <div className={`absolute -inset-10 rounded-full opacity-0 group-hover/pin:opacity-100 transition-opacity duration-700 animate-ping-slow ${isCritical ? 'bg-red-500/30' : 'bg-cyan-500/20'}`}></div>
                       <div className={`absolute -inset-6 rounded-full opacity-20 group-hover/pin:opacity-60 transition-all ${isCritical ? 'bg-red-500' : 'bg-cyan-500'}`}></div>
                       
@@ -96,7 +91,6 @@ const Dashboard: React.FC<DashboardProps> = ({ currentCity, onCityChange }) => {
                         c.analysis.riskLevel === RiskLevel.HIGH ? 'bg-orange-500 shadow-[0_0_15px_rgba(255,140,0,0.5)]' : 'bg-cyan-500 shadow-[0_0_15px_rgba(0,242,255,0.5)]'
                       }`}></div>
                       
-                      {/* Floating Tooltip */}
                       <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-4 opacity-0 group-hover/pin:opacity-100 transition-all duration-500 pointer-events-none translate-y-2 group-hover/pin:translate-y-0">
                          <div className="glass px-4 py-2 rounded-2xl border-white/20 whitespace-nowrap shadow-2xl backdrop-blur-xl">
                             <div className="text-[10px] font-black uppercase tracking-widest mb-1 text-cyan-400">{c.analysis.hazardType}</div>
@@ -109,7 +103,6 @@ const Dashboard: React.FC<DashboardProps> = ({ currentCity, onCityChange }) => {
                })}
             </div>
 
-            {/* Neural Grid Lines */}
             <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
                <div className="grid grid-cols-12 grid-rows-12 h-full w-full">
                   {Array.from({length: 144}).map((_, i) => <div key={i} className="border border-white/30"></div>)}
@@ -120,7 +113,7 @@ const Dashboard: React.FC<DashboardProps> = ({ currentCity, onCityChange }) => {
 
         <div className="space-y-6">
           <div className="glass rounded-[40px] p-8 border-white/5 h-full flex flex-col shadow-2xl">
-            <h3 className="font-bold text-white/60 uppercase tracking-[0.4em] text-[10px] mb-10">Distribution Index</h3>
+            <h3 className="font-bold text-white/60 uppercase tracking-[0.4em] text-[10px] mb-10">Risk Distribution Index</h3>
             <div className="flex-1 min-h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>

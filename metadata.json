@@ -1,6 +1,6 @@
 {
-  "name": "NexaCiv-AI",
-  "description": "A high-performance Urban AI Risk Intelligence platform using Gemini to automatically detect and manage civic hazards from visual data.",
+  "name": "NexaCiv AI",
+  "description": "NexaCiv AI — DisasterLens x CivicGuard Unified Intelligence Grid. A high-performance Urban AI Risk Intelligence platform.",
   "requestFramePermissions": [
     "camera",
     "microphone",
